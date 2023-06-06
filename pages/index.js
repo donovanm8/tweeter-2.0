@@ -3,8 +3,10 @@ import Postfeed from "@/components/Postfeed";
 import Sidebar from "@/components/Sidebar";
 import Trending from "@/components/Trending";
 import Head from "next/head";
+import { useSelector } from "react-redux";
 
 export default function Home() {
+  const userName = useSelector((state) => state.user.username) 
   return (
     <div>
       <div
@@ -24,7 +26,7 @@ export default function Home() {
         <Trending />
       </div>
 
-      <BottomBanner />
+      {!userName && <BottomBanner />}
     </div>
   );
 }

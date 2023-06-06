@@ -1,3 +1,5 @@
+import { auth } from "@/firebase";
+import { signoutUser } from "@/redux/userSlice";
 import {
   PhotoIcon,
   ChartBarIcon,
@@ -5,12 +7,27 @@ import {
   CalendarIcon,
   MapPinIcon,
 } from "@heroicons/react/24/outline";
+import { signOut } from "firebase/auth";
+import { useDispatch, useSelector } from "react-redux";
+
 export default function TweetInput() {
+  const { photoUrl } = useSelector((state) => state.user);
+  const dispatch = useDispatch()
+  
+  async function handleSignOut() {
+    await signOut(auth);
+    dispatch(signoutUser());
+  }
+
   return (
     <div className="p-3 flex space-x-3 border-b border-gray-700">
       <img
-        className="w-11 h-11 rounded-full object-cover"
-        src="https://pbs.twimg.com/profile_images/1638214874634530816/991ztYlg_400x400.jpg"
+        className="w-11 h-11 rounded-full object-cover cursor-pointer"
+        src={
+          photoUrl ||
+          "https://merriam-webster.com/assets/mw/images/article/art-wap-article-main/egg-3442-e1f6463624338504cd021bf23aef8441@1x.jpg"
+        }
+        onClick={handleSignOut}
       />
       <div className="w-full">
         <textarea

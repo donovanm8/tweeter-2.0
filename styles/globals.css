@@ -2,10 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  background-color: black;
+}
+
 .hoverAnimation {
   @apply hover:bg-white hover:bg-opacity-20 xl:p-3 rounded-full cursor-pointer w-11 h-11 xl:h-auto xl:w-auto;
 }
 
 .iconsAnimation {
-  @apply hover:bg-[#1d9bf0] hover:bg-opacity-20 rounded-full w-9 h-9 flex items-center justify-center cursor-pointer
+  @apply hover:bg-[#1d9bf0] hover:bg-opacity-20 rounded-full w-9 h-9 flex items-center justify-center cursor-pointer;
 }
